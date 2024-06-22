@@ -1,12 +1,8 @@
 <?php
-
 defined('BASEPATH') or exit('No direct script access allowed');
-
 class MY_Model extends CI_Model
 {
-
 	protected $table = '';
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -19,6 +15,27 @@ class MY_Model extends CI_Model
 	}
 
 
-}
+	/**
+	 * Fungsi Validasi Input
+	 * Rules: Dideklarasikan dalam masing-masing model
+	 *
+	 * @return void
+	 */
+	public function validate()
+	{
+		$this->load->library('form_validation');
 
+		$this->form_validation->set_error_delimeters(
+			'<small class="form-text text-danger">',
+			'</small>'
+		);
+		$validationRules = $this->getValidationRules();
+
+		$this->form_validation->set_rules($validationRules);
+
+		return $this->form_validation->run();
+	}
+
+
+}
 /* End of file MY_Model.php */
