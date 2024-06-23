@@ -31,7 +31,7 @@ class Register_model extends MY_Model
 				'label' => 'E-Mail',
 				'rules' => 'trim|required|valid_email|is_unique[user.email]',
 				'errors' => [
-					'is_unique' => 'This %s already e'
+					'is_unique' => 'This %s already use'
 				]
 			],
 			[
